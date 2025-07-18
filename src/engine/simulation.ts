@@ -34,6 +34,11 @@ export function calculateNextLogicState(state: CircuitState): GateLogics {
         case 'NOT':
           newOutput = newInputs[0] === null ? false : !newInputs[0]
           break
+        case 'NAND':
+          newOutput = !newInputs.every((inp) => inp === true)
+          break
+        default:
+          break
       }
       currentLogic.output = newOutput
     })

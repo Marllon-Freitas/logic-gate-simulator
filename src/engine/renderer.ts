@@ -1,5 +1,6 @@
 import {
   COLOR_AND_GATE_BODY,
+  COLOR_NAND_GATE_BODY,
   COLOR_NOT_GATE_BODY,
   COLOR_OFF,
   COLOR_ON,
@@ -51,6 +52,11 @@ function drawGate(
       break
     case 'NOT':
       drawNotGate(ctx, gate, logic)
+      break
+    case 'NAND':
+      drawNandGate(ctx, gate, logic)
+      break
+    default:
       break
   }
 }
@@ -125,6 +131,48 @@ function drawAndGate(
     ctx.stroke()
   }
 
+  const termPos = getGateTerminalPos(gate, 'output')
+  ctx.fillStyle = logic.output ? COLOR_ON : COLOR_OFF
+  ctx.beginPath()
+  ctx.arc(termPos.x, termPos.y, TERMINAL_RADIUS, 0, 2 * Math.PI)
+  ctx.fill()
+  ctx.stroke()
+}
+
+function drawNandGate(
+  ctx: CanvasRenderingContext2D,
+  gate: BaseGate,
+  logic: GateLogic,
+) {
+  const { x, y } = gate.position
+
+  // Corpo
+  ctx.fillStyle = COLOR_NAND_GATE_BODY
+  ctx.strokeStyle = COLOR_STROKE
+  ctx.lineWidth = 2
+  ctx.beginPath()
+  ctx.rect(x, y, GATE_WIDTH, GATE_HEIGHT)
+  ctx.fill()
+  ctx.stroke()
+
+  // Texto
+  ctx.fillStyle = COLOR_TEXT
+  ctx.font = 'bold 22px "Silkscreen", monospace'
+  ctx.textAlign = 'center'
+  ctx.textBaseline = 'middle'
+  ctx.fillText('NAND', x + GATE_WIDTH / 2, y + GATE_HEIGHT / 2)
+
+  // Terminais
+  for (let i = 0; i < gate.inputsCount; i++) {
+    const termPos = getGateTerminalPos(gate, 'input', i)
+    const signal = logic.inputs[i]
+    ctx.fillStyle =
+      signal === null ? COLOR_TERMINAL_BG : signal ? COLOR_ON : COLOR_OFF
+    ctx.beginPath()
+    ctx.arc(termPos.x, termPos.y, TERMINAL_RADIUS, 0, 2 * Math.PI)
+    ctx.fill()
+    ctx.stroke()
+  }
   const termPos = getGateTerminalPos(gate, 'output')
   ctx.fillStyle = logic.output ? COLOR_ON : COLOR_OFF
   ctx.beginPath()
