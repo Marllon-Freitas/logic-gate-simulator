@@ -1,0 +1,6 @@
+cd "$(git rev-parse --show-toplevel)"
+BRANCH=$(git rev-parse --abbrev-ref HEAD)
+if [ "$BRANCH" = "main" ]; then
+  echo "📦 Realizando deploy para GitHub Pages..."
+  npm run deploy
+fi
