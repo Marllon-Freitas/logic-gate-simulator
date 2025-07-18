@@ -26,6 +26,10 @@ export const Toolbar: React.FC<ToolbarProps> = ({
       <button onClick={() => onAddGate('NAND')} style={{ marginLeft: '10px' }}>
         Add NAND Gate
       </button>
+
+      <button onClick={() => onAddGate('OR')} style={{ marginLeft: '10px' }}>
+        Add OR Gate
+      </button>
     </div>
   )
 }

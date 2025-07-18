@@ -26,6 +26,8 @@ export function calculateNextLogicState(state: CircuitState): GateLogics {
       })
       currentLogic.inputs = newInputs
 
+      const allInputsConnected = newInputs.every((inp) => inp !== null)
+
       let newOutput = false
       switch (gate.type) {
         case 'AND':
@@ -35,7 +37,11 @@ export function calculateNextLogicState(state: CircuitState): GateLogics {
           newOutput = newInputs[0] === null ? false : !newInputs[0]
           break
         case 'NAND':
+          if (!allInputsConnected) return
           newOutput = !newInputs.every((inp) => inp === true)
+          break
+        case 'OR':
+          newOutput = newInputs.some((inp) => inp === true)
           break
         default:
           break

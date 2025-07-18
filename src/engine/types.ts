@@ -1,4 +1,4 @@
-export type GateType = 'AND' | 'NOT' | 'NAND'
+export type GateType = 'AND' | 'NOT' | 'NAND' | 'OR'
 
 export interface Point {
   x: number
