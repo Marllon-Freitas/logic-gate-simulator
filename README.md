@@ -4,6 +4,7 @@
 This project is an interactive digital logic simulator built to explore the fundamental principles of how computers work. It provides a hands-on way to understand logic gates the basic building blocks of all digital circuits.
 
 Inspired by the fantastic educational content from creators like Sebastian Lague, this playground allows you to build simple circuits by dragging, dropping, and connecting components. You can visually observe how binary logic (`1`s and `0`s) flows through the system in real-time, offering a clear and intuitive learning experience.
+
 ---
 
 ## ✨ Features
