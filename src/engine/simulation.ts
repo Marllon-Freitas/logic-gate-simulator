@@ -51,6 +51,10 @@ export function calculateNextLogicState(state: CircuitState): GateLogics {
           if (!allInputsConnected) return
           newOutput = !newInputs.some((inp) => inp === true)
           break
+        case 'XNOR':
+          if (!allInputsConnected) return
+          newOutput = newInputs.filter((inp) => inp === true).length % 2 === 0
+          break
         default:
           break
       }
