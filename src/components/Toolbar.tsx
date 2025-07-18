@@ -34,6 +34,10 @@ export const Toolbar: React.FC<ToolbarProps> = ({
       <button onClick={() => onAddGate('XOR')} style={{ marginLeft: '10px' }}>
         Add XOR Gate
       </button>
+
+      <button onClick={() => onAddGate('NOR')} style={{ marginLeft: '10px' }}>
+        Add NOR Gate
+      </button>
     </div>
   )
 }
