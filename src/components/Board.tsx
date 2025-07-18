@@ -108,10 +108,6 @@ function Board() {
         terminal.type === 'source-output' ||
         terminal.type === 'gate-output'
       ) {
-        const isAlreadyConnected = circuit.connections.some(
-          (conn) => conn.fromId === terminal.id,
-        )
-        if (isAlreadyConnected) return
         actions.setWireInProgress({
           fromId: terminal.id,
           fromPos: terminal.position,

@@ -43,6 +43,10 @@ export function calculateNextLogicState(state: CircuitState): GateLogics {
         case 'OR':
           newOutput = newInputs.some((inp) => inp === true)
           break
+        case 'XOR':
+          if (!allInputsConnected) return
+          newOutput = newInputs.filter((inp) => inp === true).length % 2 === 1
+          break
         default:
           break
       }
